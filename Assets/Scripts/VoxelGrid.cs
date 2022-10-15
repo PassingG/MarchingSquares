@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[SelectionBase]
 public class VoxelGrid : MonoBehaviour
 {
     public GameObject voxelPrefab;
