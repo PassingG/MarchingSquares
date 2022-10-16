@@ -79,7 +79,7 @@ public class VoxelMap : MonoBehaviour
             yEnd = chunkResolution - 1;
         }
 
-        VoxelStencil activeStencil = new VoxelStencil();
+        VoxelStencil activeStencil = stencils[stencilIndex];
         activeStencil.Initialize(fillTypeIndex == 0, radiusIndex);
 
         int voxelYOffset = yStart * voxelResolution;
@@ -109,8 +109,15 @@ public class VoxelMap : MonoBehaviour
     #region [ Stencil ]
     private static string[] fillTypeNames = { "Filled", "Empty" };
     private static string[] radiusNames = { "0", "1", "2", "3", "4", "5" };
+    private static string[] stencilNames = { "Square", "Circle" };
 
-    private int fillTypeIndex, radiusIndex;
+    private int fillTypeIndex, radiusIndex, stencilIndex;
+
+    private VoxelStencil[] stencils =
+    {
+        new VoxelStencil(),
+        new VoxelStencilCircle()
+    };
 
     private void OnGUI()
     {
@@ -119,6 +126,8 @@ public class VoxelMap : MonoBehaviour
         fillTypeIndex = GUILayout.SelectionGrid(fillTypeIndex, fillTypeNames, 2);
         GUILayout.Label("Radius");
         radiusIndex = GUILayout.SelectionGrid(radiusIndex, radiusNames, 6);
+        GUILayout.Label("Stencil");
+        stencilIndex = GUILayout.SelectionGrid(stencilIndex, stencilNames, 2);
         GUILayout.EndArea();
     }
     #endregion

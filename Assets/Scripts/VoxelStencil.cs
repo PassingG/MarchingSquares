@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class VoxelStencil : MonoBehaviour
 {
-    private bool fillType;
-    private int centerX, centerY, radius;
+    protected bool fillType;
+    protected int centerX, centerY, radius;
 
     public int XStart
     {
@@ -39,18 +39,18 @@ public class VoxelStencil : MonoBehaviour
         }
     }
 
-    public void Initialize(bool fillType, int radius)
+    public virtual void Initialize(bool fillType, int radius)
     {
         this.fillType = fillType;
         this.radius = radius;
     }
 
-    public bool Apply(int x, int y)
+    public virtual bool Apply(int x, int y, bool voxel)
     {
         return fillType;
     }
 
-    public void SetCenter(int x, int y)
+    public virtual void SetCenter(int x, int y)
     {
         centerX = x;
         centerY = y;
