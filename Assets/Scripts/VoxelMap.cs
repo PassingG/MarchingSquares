@@ -28,6 +28,45 @@ public class VoxelMap : MonoBehaviour
                 CreateChunk(i, x, y);
             }
         }
+
+        BoxCollider box = gameObject.AddComponent<BoxCollider>();
+        box.size = new Vector3(size, size);
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            ClickVoxel(true);
+        }
+        else if (Input.GetMouseButton(1))
+        {
+            ClickVoxel(false);
+        }
+    }
+
+    private void ClickVoxel(bool voxelState)
+    {
+        RaycastHit hitInfo;
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo))
+        {
+            if (hitInfo.collider.gameObject == gameObject)
+            {
+                EditVoxels(transform.InverseTransformPoint(hitInfo.point), voxelState);
+            }
+        }
+    }
+
+    private void EditVoxels(Vector3 point, bool state)
+    {
+        int voxelX = (int)((point.x + halfSize) / voxelSize);
+        int voxelY = (int)((point.y + halfSize) / voxelSize);
+        int chunkX = voxelX / voxelResolution;
+        int chunkY = voxelY / voxelResolution;
+
+        voxelX -= chunkX * voxelResolution;
+        voxelY -= chunkY * voxelResolution;
+        chunks[chunkY * chunkResolution + chunkX].SetVoxel(voxelX, voxelY, state);
     }
 
     private void CreateChunk(int i, int x, int y)
