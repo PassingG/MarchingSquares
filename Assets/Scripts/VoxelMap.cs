@@ -20,7 +20,7 @@ public class VoxelMap : MonoBehaviour
         chunkSize = size / chunkResolution;
         voxelSize = chunkSize / voxelResolution;
 
-        chunks = new VoxelGrid[voxelResolution * voxelResolution];
+        chunks = new VoxelGrid[chunkResolution * chunkResolution];
         for (int i = 0, y = 0; y < chunkResolution; y++)
         {
             for (int x = 0; x < chunkResolution; x++, i++)
@@ -34,7 +34,7 @@ public class VoxelMap : MonoBehaviour
     {
         VoxelGrid chunk = Instantiate(voxelGridPrefab, transform) as VoxelGrid;
         chunk.InitVoxelGrid(voxelResolution, chunkSize);
-        chunk.transform.localPosition = new Vector3(x * chunkSize - halfSize, y * chunkSize - halfSize);
+        chunk.transform.localPosition = new Vector3((x * chunkSize) - halfSize, (y * chunkSize) - halfSize);
         chunks[i] = chunk;
     }
 }

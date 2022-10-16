@@ -14,7 +14,7 @@ public class VoxelGrid : MonoBehaviour
     public void InitVoxelGrid(int resolution, float size)
     {
         this.resolution = resolution;
-        voxelSize = 1f / resolution;
+        voxelSize = size / resolution;
         voxels = new bool[resolution * resolution];
 
         for (int i = 0, y = 0; y < resolution; y++)
