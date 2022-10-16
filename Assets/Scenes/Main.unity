@@ -207,7 +207,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1577148066
+--- !u!1 &812985341
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -215,22 +215,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1577148067}
-  - component: {fileID: 1577148068}
+  - component: {fileID: 812985342}
+  - component: {fileID: 812985343}
   m_Layer: 0
-  m_Name: VoxelGrid
+  m_Name: VoxelMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1577148067
+--- !u!4 &812985342
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1577148066}
+  m_GameObject: {fileID: 812985341}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -239,17 +239,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1577148068
+--- !u!114 &812985343
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1577148066}
+  m_GameObject: {fileID: 812985341}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9afb15881deaa4406addf502aceaa676, type: 3}
+  m_Script: {fileID: 11500000, guid: fd44f2067de454a258bb3d4405a1bcdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  voxelPrefab: {fileID: 1544832444024960448, guid: 5a39f811aff3d40839291ce6f557f5d5, type: 3}
-  resolution: 10
+  size: 2
+  voxelResolution: 8
+  chunkResolution: 2
+  voxelGridPrefab: {fileID: 892105901624013296, guid: 4f0b46a28fbf3447584db69e5416f2b2, type: 3}
