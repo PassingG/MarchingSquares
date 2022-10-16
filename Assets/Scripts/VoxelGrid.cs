@@ -8,6 +8,11 @@ public class VoxelGrid : MonoBehaviour
     public GameObject voxelPrefab;
     public int resolution;
 
+    private Mesh mesh;
+
+    private List<Vector3> vertices;
+    private List<int> triangles;
+
     private bool[] voxels;
     private float voxelSize;
 
@@ -27,7 +32,12 @@ public class VoxelGrid : MonoBehaviour
                 CreateVoxel(i, x, y);
             }
         }
-        SetVoxelColors();
+
+        GetComponent<MeshFilter>().mesh = mesh = new Mesh();
+        mesh.name = "VoxelGrid Mesh";
+        vertices = new List<Vector3>();
+        triangles = new List<int>();
+        Refresh();
     }
 
     public void Apply(VoxelStencil stencil)
@@ -76,8 +86,18 @@ public class VoxelGrid : MonoBehaviour
     private void CreateVoxel(int i, int x, int y)
     {
         GameObject voxelObject = Instantiate(voxelPrefab, transform) as GameObject;
-        voxelObject.transform.localPosition = new Vector3((x + 0.5f) * voxelSize, (y + 0.5f) * voxelSize);
-        voxelObject.transform.localScale = Vector3.one * voxelSize * 0.9f;
+        voxelObject.transform.localPosition = new Vector3((x + 0.5f) * voxelSize, (y + 0.5f) * voxelSize, -0.01f);
+        voxelObject.transform.localScale = Vector3.one * voxelSize * 0.1f;
         voxelMaterials[i] = voxelObject.GetComponent<MeshRenderer>().material;
+    }
+
+    private void Refresh()
+    {
+        SetVoxelColors();
+        Triangulate();
+    }
+
+    private void Triangulate()
+    {
     }
 }
