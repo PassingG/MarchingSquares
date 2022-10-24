@@ -252,6 +252,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 2
-  voxelResolution: 5
-  chunkResolution: 3
+  voxelResolution: 10
+  chunkResolution: 10
   voxelGridPrefab: {fileID: 892105901624013296, guid: 4f0b46a28fbf3447584db69e5416f2b2, type: 3}
